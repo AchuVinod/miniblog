@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post</title>
+</head>
+<body>
+    <a href="{% url 'home' %}"  style="color: rgb(0, 0, 0);">Go Back<</a>
+    <h2>Create Post</h2>
+    <div style="position: relative;left: 650px; top:80px;">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form></div>
+    
+</body>
+</html>

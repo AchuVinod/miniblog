@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<marquee>wellcome</marquee>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+ 
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+{% endblock %}

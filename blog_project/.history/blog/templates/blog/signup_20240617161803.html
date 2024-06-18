@@ -1,0 +1,18 @@
+
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<a href="{% url 'home' %}" style="color: rgb(255, 255, 255);"><B>GO BACK<<B></a>
+<div style="width: 500px;position: relative;left: 500px;"><marquee><h1>Welcome,Please Signup To Continue</h1></marquee></div>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+
+<div style="position: relative;left: 500px; top:80px; width: ;" >
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="width: 100px; position: relative; left:100px;">Sign Up</button>
+    </form></div>
+   
+{% endblock %}

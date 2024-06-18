@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Home{% endblock %}
+
+{% block content %}
+    <h1>Blog Posts</h1>
+    
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> by {{ post.author.username }} on {{ post.created_at }}
+                <br>
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 200px;">
+                <p>{{ post.description|truncatewords:30 }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

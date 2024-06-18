@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+    <a href="{% url 'home' %}" style="color: black;"><B>GO BACK<<BA</a>
+    <div style="width: 500px;position: relative;left: 500px;"><marquee><h1>Welcome,Please Login To Continue</h1></marquee></div>
+    <div style="position: relative;left: 650px; top:80px;">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="width: 100px; position: relative; left:30px;">Login</button>
+    </form></div>
+    
+</body>
+</html>

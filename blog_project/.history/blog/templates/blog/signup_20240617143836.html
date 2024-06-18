@@ -1,0 +1,16 @@
+
+
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<marquee><h1>Welcome,Please Signup To Continue</h1></marquee>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+ 
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="width: ;">Sign Up</button>
+    </form>
+{% endblock %}

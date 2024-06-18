@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Home</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <a href="{% url 'signup' %}">Sign Up</a> | <a href="{% url 'login' %}">Login</a> | <a href="{% url 'create_post' %}">Create Post</a>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                by {{ post.author.username }} on {{ post.created_at }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

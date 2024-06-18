@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+   <style></style> body {
+        position: relative;
+        width: 200px;
+        background: url('https://img.freepik.com/free-photo/person-looking-futuristic-mystical-other-worldly-sky_23-2150946663.jpg?t=st=1718619425~exp=1718623025~hmac=ae74f13aa67d141aaeb915d8d0dc914e8ccf31274ab148a46a8cc6294c70c0a7&w=1060') no-repeat;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        height: 100vh;}
+</head>
+<body>
+   
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.description }}</p>
+    <img src="{{ post.image.url }}" alt="{{ post.title }}"  style="height:450px; width:500px;">
+    <p>Posted by <B><u>{{ post.author.username }}</u></B> on {{ post.created_at }}</p>
+
+    <h3>Comments</h3>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.author.username }}: {{ comment.text }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if user.is_authenticated %}
+        <h3>Add a comment</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Comment</button><br>
+        </form>
+    {% endif %}
+
+    {% if user == post.author %}
+        <form method="post" action="{% url 'delete_post' post.pk %}">
+            {% csrf_token %}<br>
+            <button type="submit">Delete Post</button>
+        </form>
+    {% endif %}
+    <a href="{% url 'homepage' %}">Back</a>
+</body>
+</html>

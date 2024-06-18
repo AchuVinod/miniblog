@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Blog{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'create_post' %}">Create Post</a></li>
+            {% else %}
+                <a href="{% url 'signup' %}">Sign Up</a></li>
+                <a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
